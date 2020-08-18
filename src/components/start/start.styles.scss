@@ -16,6 +16,11 @@
   }
 }
 
+.levels {
+  display: flex;
+  flex-direction: row;
+}
+
 .button {
   margin-top: 6px;
   padding: 5px 10px;

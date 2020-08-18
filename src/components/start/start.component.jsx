@@ -1,46 +1,36 @@
 import React from 'react';
 
-import './input.styles.scss';
+import './start.styles.scss';
 
-class Start extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputValue: 0,
-    }
+import LEVELS from '../../assets/levels.data';
+import LevelButton from '../level-button/level-button.component';
+
+const Start = ({ startGame }) =>  {
+
+  const setLevel = level => {
+    startGame(level);
   }
 
-  handleChange = event => {
-    const inputValue = event.target.value;
-    this.setState({ inputValue });
+  const renderLevelButtons = () => {
+    return LEVELS.map((level) => (
+      <LevelButton
+        key={level.level}
+        level={level} 
+        setLevel={setLevel}
+      />
+    ));
   }
 
-  handleSubmit = event => {
-    const { inputValue } = this.state;
+  const levelButtons = renderLevelButtons();
 
-    event.preventDefault();
-
-    if(inputValue >= 2 && inputValue <= 50) {
-      this.props.startGame(parseInt(inputValue));
-    } else {
-      alert('Invalid input');
-    }
-  }
-
-  render() {
-    const { inputValue } = this.state;
-
-    return(
-      <div className='pair-input'>
-        <h2>Number of pairs?</h2>
-        <p>Choose a number between 2 and 50</p>
-        <form onSubmit={this.handleSubmit} className='form'>
-          <input className='input' type='number' value={inputValue} onChange={this.handleChange}/>
-          <button type='submit' className='button'>START GAME</button>
-        </form>
+  return(
+    <div className='pair-input'>
+      <h2>Choose level</h2>
+      <div className='levels'>
+        {levelButtons}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Start;
