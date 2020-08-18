@@ -2,7 +2,7 @@ import React from 'react';
 
 import './input.styles.scss';
 
-class Input extends React.Component {
+class Start extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,4 +43,4 @@ class Input extends React.Component {
   }
 }
 
-export default Input;
+export default Start;

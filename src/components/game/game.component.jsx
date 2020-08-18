@@ -3,7 +3,7 @@ import React from 'react';
 import './game.styles.scss';
 
 import Card from '../card/card.component';
-import Input from '../input/input.component';
+import Start from '../start/start.component';
 import Stats from '../stats/stats.component';
 
 class Game extends React.Component {
@@ -126,7 +126,7 @@ class Game extends React.Component {
           {cards}
         </div>
         :
-        <Input startGame={this.startGame} />
+        <Start startGame={this.startGame} />
         }
       </div>
     );
